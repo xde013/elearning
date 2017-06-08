@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<div class="card">
+						
+						<div class="card-image">
+							<img src="https://www.edx.org/sites/default/files/school/image/banner/harvardx.jpg">
+							<span class="card-title"> <h3><%=h @university.name %></h3></span>
+						</div>
+						<div class="card-content">
+							<div class="section">
+								<p class = "">
+                <%= simple_format(@university.description) %>
+								</p>
+							</div>					
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="section">
+					<h4>	Harvard University MOOCs </h4>
+					<p>	Browse free online courses in a variety of subjects. Harvard University courses found below can be audited free or students can choose to receive a verified certificate for a small fee. Select a course to learn more.</p>
+				</div>
+				<div class="divider">	</div>
+				<% @university.courses.each do |course| %>
+				  <div class="col s4">
+					<div class="card">
+						<div class="card-image">
+							<img src="http://lorempixel.com/640/480/abstract/10">
+							<span class="card-title"> <%= course.title %> </span>
+						</div>
+						<div class="card-content">
+							<p><%= course.description %></p>
+						</div>
+						<div class="card-action">
+							<a href="#">This is a link</a>
+						</div>
+					</div>
+				</div>
+				<% end %>
+				
+			</div>
+		</div>
+
+<%= link_to 'Edit', edit_university_path(@university) %> |
+<%= link_to 'Back', universities_path %>

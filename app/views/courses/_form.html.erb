@@ -1,0 +1,62 @@
+<%= form_with(model: course, local: true, multipart: true) do |form| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :course_title, placeholder: " " %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :course_description, placeholder: " " %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :length %>
+    <%= form.number_field :length, id: :course_length, placeholder: " " %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :subjectstring %>
+    <%= form.text_field :subjectstring, id: :course_subjectstring, placeholder: " " %>
+  </div>
+
+  <div class="input-field">
+   
+    <span> Choose level </span>
+    <%= form.select :level, options_for_select(Level.all.map{|l| [l.name, l.id]}, course.level)  %>
+    
+  </div>
+  
+  <div class="input-field">
+   
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url, id: :course_image_url, placeholder: " " %>
+  </div>
+
+
+  <div class="input-field">
+    <span> University </span>
+    <%= form.select :university_id, options_for_select(University.all.map{ |u| [ u.name, u.id]}, course.university_id) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  <script> 
+      $(document).ready(function() {
+       
+        $('select').material_select();
+       });
+  </script>
+<% end %>

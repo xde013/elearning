@@ -1,0 +1,54 @@
+<div class="slider">
+  <ul class="slides">
+    <li>
+      <%= image_tag('cover1.jpeg') %>
+        <!-- random image -->
+        <div class="caption center-align">
+          <h3>Welcome to FreeCoursesOnline</h3>
+          <h4 class="light grey-text text-lighten-3">Free for everyone, forever!</h4>
+          <%= link_to 'Start Learning NOW', new_user_registration_path, class: 'waves-effect waves-light btn-large'%>
+        </div>
+    </li>
+    <li>
+      <%= image_tag('cover2.jpeg') %>
+        <!-- random image -->
+        <div class="caption left-align">
+          <h3>Become certified starting from now</h3>
+          <h5 class="light grey-text text-lighten-3">We offer the best certificates in the market</h5>
+           <%= link_to 'Start Learning NOW', new_user_registration_path, class: 'waves-effect waves-light btn-large'%>
+        </div>
+    </li>
+    <li>
+      <%= image_tag('cover3.jpeg') %>
+        <!-- random image -->
+        <div class="caption right-align">
+          <h3>Free courses from prestigious Universities</h3>
+          <h5 class="light grey-text text-lighten-3">High ranked universities from all around the world</h5>
+           <%= link_to 'Start Learning NOW', new_user_registration_path, class: 'waves-effect waves-light btn-large'%>
+        </div>
+    </li>
+  </ul>
+</div>
+
+<div class="divider"></div>
+
+<div class="container">
+
+  <div>
+    <h4 class="center-align">Cours Recent</h4>
+  </div>
+
+  <div class="row">
+    <% 1.upto(3) do |i| %>
+    <%= render( :partial => 'cards/card', :locals => {:i => i}) %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+
+ $(document).ready(function(){
+      $('.slider').slider();
+    });
+
+</script>
