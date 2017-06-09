@@ -9,7 +9,7 @@ RailsAdmin.config do |config|
   # config.current_user_method(&:current_user)
 
   ## == Cancan ==
-  # config.authorize_with :cancan
+   config.authorize_with :cancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -22,6 +22,8 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
+
+  
 # Devise Config 
  config.authenticate_with do
     warden.authenticate! scope: :user
