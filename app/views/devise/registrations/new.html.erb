@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col s8 offset-s2">
-        <h2>Sign up</h2>
-
+        <h3>Sign up</h3>
+        <p class="flow-text"> To discover the best online courses now! </p>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
 
@@ -32,11 +32,10 @@
           </div>
 
           <div class="actions center-align">
-            <%= f.submit "Sign up",  class: 'waves-effect waves-light btn indigo' %>
+            <%= f.submit "Sign up",  class: 'waves-effect waves-light btn-large indigo' %>
           </div>
         <% end %>
 
-       
     </div>
   </div>
   <%= render "devise/shared/links" %>

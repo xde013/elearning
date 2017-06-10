@@ -17,19 +17,32 @@
         </div>
         <div class="col s5">
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">Sass</a></li>
-            <li><a href="#">Components</a></li>
+            <li><%= link_to 'Courses', courses_path %></li>
+            <li><%= link_to 'Partners & Universities', universities_path %></li>
             <% if current_user.nil? %>
               <li> <a class="waves-effect waves-light btn" href="#login"><i class="material-icons left">input</i>Login</a></li>
-              <% else %>
-
-                <li>
-                  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete  %>
-                </li>
+            <% else %>
+                <% if current_user.admin? %>
+                  <li><a class="dropdown-button" href="#!" data-activates="admin"><i class="material-icons left">supervisor_account</i> Admin <i class="material-icons right">arrow_drop_down</i></a></li>
+                <% else %>
+                <li><a class="dropdown-button" href="#!" data-activates="user"><i class="material-icons left">perm_identity</i> My Account<i class="material-icons right">arrow_drop_down</i></a></li>
                 <% end %>
+            <% end %>
           </ul>
         </div>
       </div>
     </div>
   </nav>
 </div>
+<ul id="user" class="dropdown-content">
+  <li><a href="#!"> My Courses </a></li>
+  <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+  <li class="divider"></li>
+  <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete  %></li>
+</ul>
+  
+<ul id="admin" class="dropdown-content">
+  <li><%= link_to 'Dashboard', rails_admin_path %> </li>
+  <li class="divider"></li>
+  <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete  %></li>
+</ul>
