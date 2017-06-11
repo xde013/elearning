@@ -17,10 +17,11 @@
         </div>
         <div class="col s5">
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><%= link_to 'Courses', courses_path %></li>
+            <li><%= link_to 'Courses', courses_all_path %></li>
             <li><%= link_to 'Partners & Universities', universities_path %></li>
             <% if current_user.nil? %>
-              <li> <a class="waves-effect waves-light btn" href="#login"><i class="material-icons left">input</i>Login</a></li>
+              
+              <li> <a class="waves-effect waves-light btn indigo" href="/users/sign_in"><i class="material-icons left">input</i>Login</a></li>
             <% else %>
                 <% if current_user.admin? %>
                   <li><a class="dropdown-button" href="#!" data-activates="admin"><i class="material-icons left">supervisor_account</i> Admin <i class="material-icons right">arrow_drop_down</i></a></li>
@@ -35,7 +36,7 @@
   </nav>
 </div>
 <ul id="user" class="dropdown-content">
-  <li><a href="#!"> My Courses </a></li>
+  <li><%= link_to 'My courses', courses_path %></li>
   <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
   <li class="divider"></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete  %></li>
