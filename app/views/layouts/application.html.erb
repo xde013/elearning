@@ -7,32 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-        <style>
-          .nav-wrapper .input-field input[type=search] {
-            height: 64px;
-          }
-
-          .nav-wrapper input[type="search"]:focus {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-          }
-
-          .input-field label {
-            max-height: 64px;
-          }
-
-          .nav-wrapper input[type="search"]:focus~.label-icon.active {
-            position: fixed;
-            left: 10px;
-          }
-
-          .nav-wrapper input[type="search"]:focus~.closed {
-            position: fixed;
-            right: 10px;
-          }
-        </style>
+        
 </head>
 
 <body>
@@ -44,53 +19,10 @@
         toastr['<%= type %>']('<%= f[1] %>');
         <% end %>
       </script>
-      <% end %>
+    <% end %>
 
-        <%= yield %>
-          <%= render( :partial => 'footer/footer') %>
-
-            <div id="login" class="modal">
-              <div class="modal-content">
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col s10 offset-s1">
-                        <h2>Log in</h2>
-
-                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-                  <div class="input-field">
-                    <%= f.label :email %><br />
-                      <%= f.email_field :email, autofocus: true, class: 'validate' %>
-                  </div>
-
-                  <div class="input-field">
-                    <%= f.label :password %><br />
-                      <%= f.password_field :password, autocomplete: "off", class: 'validate' %>
-                  </div>
-
-                  <% if devise_mapping.rememberable? -%>
-                    <div class="field">
-                      <%= f.check_box :remember_me %>
-                        <%= f.label :remember_me %>
-                    </div>
-                    <% end %>
-                      <div class="row">
-                      
-                      </div>
-                      <div class="actions center-align">
-                        <%= f.submit "Log in", class: 'waves-effect waves-light btn indigo' %>
-                      </div>
-              
-              <% end %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
+  <%= yield %>
+  <%= render( :partial => 'footer/footer') %>
 
 </body>
-
 </html>
