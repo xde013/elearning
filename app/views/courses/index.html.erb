@@ -1,5 +1,5 @@
 
-<h1>Courses</h1>
+<h1> Your Courses</h1>
 
 <table>
   <thead>
@@ -33,7 +33,32 @@
     <% end %>
   </tbody>
 </table>
-
+<div class="container">
+  <div class="row">
+      <% @courses.each do |course| %>
+				  <div class="col s4">
+					<div class="card">
+						<div class="card-image">
+							<img src="http://lorempixel.com/640/480/abstract/10">
+							<span class="card-title"> <%= course.title %> </span>
+						</div>
+						<div class="card-content">
+							<p><%= course.description %></p>
+						</div>
+						<div class="card-action">
+							
+              <div class="row">
+                   <%= link_to 'Show', course %>
+                   <%= link_to 'Edit', edit_course_path(course) %>
+                   <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+             
+						</div>
+					</div>
+				</div>
+				<% end %>
+  </div>
+</div>
 <br>
 
 <%= link_to 'New Course', new_course_path %>

@@ -43,8 +43,7 @@
     <%= form.label :image_url %>
     <%= form.text_field :image_url, id: :course_image_url, placeholder: " " %>
   </div>
-
-
+  
   <div class="input-field">
     <span> University </span>
     <%= form.select :university_id, options_for_select(University.all.map{ |u| [ u.name, u.id]}, course.university_id) %>

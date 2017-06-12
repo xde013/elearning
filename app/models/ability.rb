@@ -13,8 +13,10 @@ class Ability
         if user.teacher_role?
           can :read, :all
           can :manage, Course, :user_id => user.id 
+          can :manage, User, :user_id => user.id
         elsif user.student_role? 
           can :read, :all
+          can :manage, User, :user_id => user.id
         end
       end
   end
