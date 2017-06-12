@@ -1,19 +1,19 @@
 <div class="container">
-  <div class="row">
-    <div class="col s8 offset-s2">
-        <h3>Sign up</h3>
-        <p class="flow-text"> To discover the best online courses now! </p>
+<div class="row">
+  <div class="col s8 offset-s2">
+     <h3>Sign up</h3>
+        <p class="flow-text"> Join your university and start teaching! </p>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
 
           <div class="field">
             <%= f.label :name %><br />
-            <%= f.text_field :name, autofocus: true, class: 'validate' %>
+            <%= f.text_field :name, autofocus: true, class: 'validate', :required => true %>
           </div>
 
           <div class="field">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, class: 'validate' %>
+            <%= f.email_field :email, autofocus: true, class: 'validate', :required => true %>
           </div>
 
           <div class="field">
@@ -21,13 +21,28 @@
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "off", class: 'validate' %>
+            <%= f.password_field :password, autocomplete: "off", class: 'validate', :required => true %>
           </div>
 
           <div class="field">
             <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'validate' %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'validate', :required => true %>
           </div>
+           <div class="row"></div>
+          
+          <div class="field required">
+                <%= f.check_box(:teacher_role) %>
+               <%= f.label(:teacher_role, "Sign up as instructor") %> 
+          <%= f.hidden_field :student_role, :value => !params[:teacher_role] %>
+          </div>
+
+          <div class="row"></div>
+
+          <div class="field">
+            
+            <%= f.select :university_id, options_for_select(University.all.map{ |u| [ u.name, u.id]}), {prompt: 'Select your University', } %>
+          </div>
+
           <div class="row">
           </div>
 
@@ -35,9 +50,25 @@
             <%= f.submit "Sign up",  class: 'waves-effect waves-light btn-large indigo' %>
           </div>
         <% end %>
+         <%= render "devise/shared/links" %>
+      </div>
 
-    </div>
+    
+     <script>
+       $(document).ready(function() {
+        var toggle = false;
+
+        $(":checkbox").on('click', function(){
+          if ( toggle ) {
+               $('select').material_select('destroy');
+          } else {
+              $('select').material_select();
+          }
+          toggle = !toggle;
+        })
+        });       
+     </script>
   </div>
-  <%= render "devise/shared/links" %>
+</div>  
 </div>
-
+       

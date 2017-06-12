@@ -40,7 +40,12 @@
                 <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
                   <%= f.password_field :current_password, autocomplete: "off" %>
               </div>
-
+              <% if current_user.teacher_role %>
+               <div class="field">
+                  <%= f.label :university_id %><br />
+                  <%= f.select :university_id, options_for_select(University.all.map{ |u| [ u.name, u.id]}, current_user.university_id) %>
+                </div>
+              <% end %>
               <div class="row">
               </div>
 
