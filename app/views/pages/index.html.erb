@@ -33,7 +33,21 @@
 <div class="divider"></div>
 
 <div class="container">
-
+<div class="row"></div>
+<div class="row">
+   <nav>
+    <div class="nav-wrapper">
+      
+       <%= form_tag(courses_all_path, :method => "get", id: "search") do %>
+          <div class="input-field">
+           <%= text_field_tag :search, params[:search], placeholder: "Search Courses", type: "search" %>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+          </div>     
+      <% end %>
+    </div>
+  </nav>
+</div>
   <div>
     <h4 class="center-align">Cours Recent</h4>
   </div>
