@@ -8,6 +8,6 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, :case_sensitive => false, :message => "Email already taken!"
   # Associations 
   has_many :courses
+  has_many :course_enrollements
   belongs_to :university, optional: true
-  
 end

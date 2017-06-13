@@ -12,7 +12,14 @@ class CoursesController < ApplicationController
   end
   
   def index
-    @courses = current_user.courses
+    @courses = []
+    if current_user.student_role?
+       current_user.course_enrollements.all.each do |entry|
+          @courses << entry.course
+        end
+     else 
+       @courses = current_user.courses
+    end 
   end
 
   # GET /courses/1

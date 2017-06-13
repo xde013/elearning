@@ -13,6 +13,8 @@
 				</div>
 				<div class="col s4 ">
 					<div class="center-align">
+					<% if current_user.course_enrollements.%>
+					<%= button_to "Enroll Now", {controller: "course_enrollements", action: "create", :course_enrollement => {user_id: current_user.id, course_id: @course.id} } , :method=>:post  %>
 						<a class="waves-effect waves-light btn-large valign-wrapper">Button</a>
 					</div>
 				</div>
@@ -42,7 +44,7 @@
 				<div class="divider"></div>
 				<h4 class="center-align"> Instructors </h4>
 				<ul class="collection">
-
+					
 					<li class="collection-item avatar">
 						<img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
 						<span class="title"> <%= @course.user.name %> </span>
@@ -50,6 +52,7 @@
 						</p>
 						<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
 					</li>
+				
 					
 				</ul>
 
@@ -117,5 +120,4 @@
 	</script>
 </body>
 
-<%= link_to 'Edit', edit_course_path(@course), class: 'waves-effect waves-yellow btn-flat' %> |
-<%= link_to 'Back', :back , class: 'waves-effect waves-yellow btn-flat' %>
+<%= link_to 'Edit', edit_course_path(@course), class: 'waves-effect waves-yellow btn-flat' %> 
