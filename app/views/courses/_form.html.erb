@@ -46,7 +46,7 @@
   
   <div class="input-field">
     <span> University </span>
-    <%= form.select :university_id, options_for_select(University.all.map{ |u| [ u.name, u.id]}, course.university_id) %>
+    <%= form.select :university_id, options_for_select([[current_user.university.name, current_user.university_id]], current_user.university_id) %>
   </div>
 
   <div class="actions">

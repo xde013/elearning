@@ -13,8 +13,9 @@
 				</div>
 				<div class="col s4 ">
 					<div class="center-align">
-					<% if current_user.course_enrollements.%>
+					<% if current_user.course_enrollements %>
 					<%= button_to "Enroll Now", {controller: "course_enrollements", action: "create", :course_enrollement => {user_id: current_user.id, course_id: @course.id} } , :method=>:post  %>
+					<% end %>
 						<a class="waves-effect waves-light btn-large valign-wrapper">Button</a>
 					</div>
 				</div>
