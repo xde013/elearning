@@ -1,0 +1,90 @@
+
+
+	<div class="container">
+			<div class="row">
+      <h1> All Courses</h1>
+				<div class="col s3">
+					<div class="collection with-header">
+						<h5 class="collection-header">	Availability </h5>
+						<a href="#!" class="collection-item">Alvin <span class="new badge blue" data-badge-caption="">4</span></a>
+						<a href="#!" class="collection-item active">Alvin<span class="new badge blue" data-badge-caption="">4</span></a>
+						<a href="#!" class="collection-item">Alvin<span class="new badge blue" data-badge-caption="">4</span></a>
+						<a href="#!" class="collection-item">Alvin<span class="new badge blue" data-badge-caption="">4</span></a>
+					</div>
+					<div class="collection with-header">
+						<h5 class="collection-header">	Subjects </h5>
+						<a href="#!" class="collection-item">Alvin <span class="new badge blue" data-badge-caption="">4</span></a>
+						<a href="#!" class="collection-item active">Alvin<span class="new badge blue" data-badge-caption="">4</span></a>
+						<a href="#!" class="collection-item">Alvin<span class="new badge blue" data-badge-caption="">4</span></a>
+						<a href="#!" class="collection-item">Alvin<span class="new badge blue" data-badge-caption="">4</span></a>
+					</div>
+					<div class="input-field" >
+						<h5> University </h5>
+						<select id="uny">
+							<option value="" disabled selected>Choose your option</option>
+							<option value="1">Harvard</option>
+							<option value="2">Ibn Tofail</option>
+							<option value="3"> Cadi Ayad</option>
+						</select>
+							
+					</div>
+					<div class="collection with-header">
+						<h5 class="collection-header">	Levels </h5>
+						<a href="#!" class="collection-item">Alvin <span class="new badge blue" data-badge-caption="">4</span></a>
+						<a href="#!" class="collection-item active">Alvin<span class="new badge blue" data-badge-caption="">4</span></a>
+						<a href="#!" class="collection-item">Alvin<span class="new badge blue" data-badge-caption="">4</span></a>
+					</div>
+				</div>
+				<div class="col s9 ">
+					
+          <% @courses.each do | course | %>
+        
+          <div class="col s4">
+						<div class="card">
+							<div class="card-image">
+								<img src="http://lorempixel.com/640/480/abstract/10">
+								<span class="card-title"><%= course.title %></span>
+                  
+							</div>
+							<div class="card-content">
+								<p><%= truncate(course.description, :length => 100) %></p>
+                  <div class="row">
+                  <div class="col s6"><div class="chip indigo white-text"> <%= course.subjectstring %> </div></div>
+                  </div>
+                  <div class="col s6">
+                  <div class="chip teal white-text"> <%= course.university.name %> </div>
+                  </div>
+							</div>
+							<div class="card-action">
+              <div class="row">
+                <div class="col s4">
+                  <%= link_to 'Show', course %>
+                </div>
+                <div class="col s4">
+                   <%= link_to 'Edit', edit_course_path(course) %>
+                </div>
+                <div class="col s4">
+                   <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+              </div>
+								 
+                
+                
+							</div>
+						</div>
+					</div>
+        <% end %>    
+
+          
+				</div>
+			</div>
+      
+      <%= link_to 'New Course', new_course_path %>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#uny').material_select();
+			});
+		</script>
+<br>  
+
