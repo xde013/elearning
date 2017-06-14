@@ -7,7 +7,8 @@ class User < ApplicationRecord
   validates_format_of :email, :with => EMAIL_REGX
   validates_uniqueness_of :email, :case_sensitive => false, :message => "Email already taken!"
   # Associations 
-  has_many :courses
-  has_many :course_enrollements
+  has_many :courses, dependent: :destroy
+  has_many :course_enrollements, dependent: :destroy
   belongs_to :university, optional: true
+
 end
