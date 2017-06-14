@@ -3,17 +3,16 @@ class CoursesController < ApplicationController
   load_and_authorize_resource
 
   # GET /courses
-  # GET /courses.json
   def all 
     @courses = Course.all
     if params[:search]
-      @courses = Course.search(params[:search]).order("Created_at DESC")
+      @courses = Course.search(params[:search]).order("Created_at DESC") # using search named scope
     end
   end
   
   def index
-    @courses = []
-    if current_user.student_role?
+    @courses = [] # initialization to push enroll's course
+    if current_user.student_role? # Double validation 
        current_user.course_enrollements.all.each do |entry|
           @courses << entry.course
         end
@@ -23,7 +22,6 @@ class CoursesController < ApplicationController
   end
 
   # GET /courses/1
-  # GET /courses/1.json
   def show
   end
 
@@ -38,23 +36,18 @@ class CoursesController < ApplicationController
   end
 
   # POST /courses
-  # POST /courses.json
   def create
     @course = current_user.courses.new(course_params)
-
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /courses/1
-  # PATCH/PUT /courses/1.json
   def update
     respond_to do |format|
       if @course.update(course_params)
@@ -68,7 +61,6 @@ class CoursesController < ApplicationController
   end
 
   # DELETE /courses/1
-  # DELETE /courses/1.json
   def destroy
     @course.destroy
     respond_to do |format|
@@ -78,12 +70,12 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_course
       @course = Course.friendly.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
+    # Never trust parameters from the scary internetz
     def course_params
       params.require(:course).permit(:title, :description, :length, :subjectstring, :level, :image_url, :slug, :university_id)
     end
