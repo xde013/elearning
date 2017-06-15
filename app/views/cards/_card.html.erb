@@ -1,17 +1,36 @@
-
 <div class="col s4">
     <div class="card">
         <div class="card-image">
-         <img src="http://lorempixel.com/640/480/abstract/<%= @i = i %>"> 
-            <span class="card-title">Card Title</span>
+            <img src="http://lorempixel.com/640/480/abstract/<%= rand(1..10) %>">
+            <span class="card-title"><%= course.title %></span>
         </div>
         <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require
-                little markup to use effectively.</p>
+            <p>
+                <%= truncate(course.description, :length => 100) %>
+            </p>
+            <div class="row valign-wrapper">
+                <div class="col s12">
+                    <div class="chip indigo white-text">
+                        <%= course.subjectstring %>
+                    </div>
+                    <div class="chip teal white-text">
+                        <%= course.university.name %>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card-action">
-            <a href="#">This is a link</a>
+            <div class="row">
+                <div class="col s4">
+                    <%= link_to 'Show', course %>
+                </div>
+                <div class="col s4">
+                    <%= link_to 'Edit', edit_course_path(course) %>
+                </div>
+                <div class="col s4">
+                    <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>

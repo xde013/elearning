@@ -51,10 +51,10 @@
   <div>
     <h4 class="center-align">Cours Recent</h4>
   </div>
-
+  
   <div class="row">
-    <% 1.upto(3) do |i| %>
-    <%= render( :partial => 'cards/card', :locals => {:i => i}) %>
+    <% Course.last(5).reverse.each do |course| %>
+     <%= render( :partial => 'cards/card', :locals => { course: course }) %>
     <% end %>
   </div>
 </div>

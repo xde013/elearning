@@ -24,26 +24,12 @@
 					<h4>	Harvard University MOOCs </h4>
 					<p>	Browse free online courses in a variety of subjects. Harvard University courses found below can be audited free or students can choose to receive a verified certificate for a small fee. Select a course to learn more.</p>
 				</div>
-				<div class="divider">	</div>
+				<div class="divider"></div>
 				<% @university.courses.each do |course| %>
-				  <div class="col s4">
-					<div class="card">
-						<div class="card-image">
-							<img src="http://lorempixel.com/640/480/abstract/10">
-							<span class="card-title"> <%= course.title %> </span>
-						</div>
-						<div class="card-content">
-							<p><%= course.description %></p>
-						</div>
-						<div class="card-action">
-							<a href="#">This is a link</a>
-						</div>
-					</div>
-				</div>
+				 	<%= render partial: "cards/card", locals: {course: course} %>
 				<% end %>
-				
 			</div>
 		</div>
-
 <%= link_to 'Edit', edit_university_path(@university) %> |
-<%= link_to 'Back', universities_path %>
+<%= link_to 'Back', universities_path,  class: 'waves-effect waves-yellow btn-flat' %>
+

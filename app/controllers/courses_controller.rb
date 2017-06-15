@@ -11,18 +11,16 @@ class CoursesController < ApplicationController
   end
   
   def index
-    @courses = [] # initialization to push enroll's course
-    if current_user.student_role? # Double validation 
-       current_user.course_enrollements.all.each do |entry|
-          @courses << entry.course
-        end
-     else 
-       @courses = current_user.courses
-    end 
+    @courses = current_user.courses
   end
 
   # GET /courses/1
   def show
+  end
+
+   # GET /courses/1/edit
+  def edit
+   
   end
 
   # GET /courses/new
@@ -30,10 +28,7 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
-  # GET /courses/1/edit
-  def edit
-   
-  end
+ 
 
   # POST /courses
   def create
@@ -52,10 +47,8 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if @course.update(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
       else
-        format.html { render :edit }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
+        format.html { render :edit }        
       end
     end
   end
@@ -65,7 +58,6 @@ class CoursesController < ApplicationController
     @course.destroy
     respond_to do |format|
       format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

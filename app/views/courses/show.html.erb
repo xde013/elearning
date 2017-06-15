@@ -1,4 +1,3 @@
-<body>
 	<div class="container">
 		<div class="card-panel">
 			<div class="row valign-wrapper">
@@ -13,13 +12,19 @@
 				</div>
 				<div class="col s4 ">
 					<div class="center-align">
-					<% if current_user.course_enrollements %>
-					<%= button_to "Enroll Now", {controller: "course_enrollements", action: "create", :course_enrollement => {user_id: current_user.id, course_id: @course.id} } , :method=>:post  %>
+					
+					<% if current_user.student_role? %>
+						<% unless studied_by?(@course, current_user) %>
+							<%= button_to "Enroll Now", {controller: "course_enrollements", action: "create", :course_enrollement => {user_id: current_user.id, course_id: @course.id} } , { class: "waves-effect waves-light btn-large teal", :method=>:post } %>
+						<% else %>
+							<%= link_to 'Unsubscribe',  {controller: "course_enrollements", action: "destroy", :params => {user_id: current_user.id, course_id: @course.id} } , { class:"waves-effect waves-teal btn-large btn-flat", method: :delete, data: { confirm: 'Are you sure?' }} %>
+						<% end %>
 					<% end %>
-						<a class="waves-effect waves-light btn-large valign-wrapper">Button</a>
+					
 					</div>
 				</div>
 			</div>
+			<%= link_to 'Edit course', edit_course_path(@course), class: 'waves-effect waves-yellow btn-flat' %> 
 		</div>
 		<div class="row">
 
@@ -92,7 +97,7 @@
 									</p>
 								</li>
 								<li class="collection-item">
-									<b> Zoubida </b> <br>
+									<b> Lorem atchum</b> <br>
 									<p>
 										Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse proident, sunt in
 										culpa qui officia deserunt mollit anim id est laborum.
@@ -111,14 +116,10 @@
 				</ul>
 
 			</div>
-		</div>
-
+		</div>		
 	</div>
 	<script type="text/javascript" charset="utf-8" async defer>
 		$(document).ready(function () {
 			$('.collapsible').collapsible();
 		});
 	</script>
-</body>
-
-<%= link_to 'Edit', edit_course_path(@course), class: 'waves-effect waves-yellow btn-flat' %> 

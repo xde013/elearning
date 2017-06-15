@@ -40,15 +40,8 @@
                 <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
                   <%= f.password_field :current_password, autocomplete: "off" %>
               </div>
-              <% if current_user.teacher_role %>
-               <div class="field">
-                  <%= f.label :university_id %><br />
-                  <%= f.select :university_id, options_for_select(University.all.map{ |u| [ u.name, u.id]}, current_user.university_id) %>
-                </div>
-              <% end %>
               <div class="row">
               </div>
-
               <div class="actions center-align">
                 <%= f.submit "Update", class: 'waves-effect waves-light btn teal' %>
               </div>
@@ -66,14 +59,13 @@
                     </div>
                   </li>
                 </ul>
-                <%= link_to "Back", :back, class: 'waves-effect waves-yellow btn-flat' %>
-                  
-
+                <%= link_to "Back", :back, class: 'waves-effect waves-yellow btn-flat' %>                
     </div>
   </div>
   <script>
      $(document).ready(function(){
         $('.collapsible').collapsible();
+        $('select').material_select();
      });
   </script>
 </div>

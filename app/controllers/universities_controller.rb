@@ -29,11 +29,9 @@ class UniversitiesController < ApplicationController
 
     respond_to do |format|
       if @university.save
-        format.html { redirect_to @university, notice: 'University was successfully created.' }
-        format.json { render :show, status: :created, location: @university }
+        format.html { redirect_to @university, notice: 'University was successfully created.' } 
       else
         format.html { render :new }
-        format.json { render json: @university.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +41,9 @@ class UniversitiesController < ApplicationController
   def update
     respond_to do |format|
       if @university.update(university_params)
-        format.html { redirect_to @university, notice: 'University was successfully updated.' }
-        format.json { render :show, status: :ok, location: @university }
+        format.html { redirect_to @university, notice: 'University was successfully updated.' }  
       else
         format.html { render :edit }
-        format.json { render json: @university.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +54,6 @@ class UniversitiesController < ApplicationController
     @university.destroy
     respond_to do |format|
       format.html { redirect_to universities_url, notice: 'University was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

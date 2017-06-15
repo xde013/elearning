@@ -1,5 +1,14 @@
-<h1>New Course</h1>
+<div class="container">
+    <div class="row center-align">
+        <h3>New Course</h3>
+    </div>
+</div>
 
 <%= render 'form', course: @course %>
 
-<%= link_to 'Back', courses_path %>
+<div class="row">
+    <div class="col s12 center-align">
+        <%= link_to 'Back', :back,  class: 'waves-effect waves-yellow btn-flat ' %>
+    </div>
+</div>
+

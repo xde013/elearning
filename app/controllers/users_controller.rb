@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
   load_and_authorize_resource
-
   # GET /users
   # GET /users.json
   def index
@@ -21,5 +20,4 @@ class UsersController < ApplicationController
     def user_params
       params.fetch(:user, {})
     end
-
 end

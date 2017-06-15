@@ -4,15 +4,19 @@
       <div class="row">
         <div class="col s2">
           <h4>
-            <%= link_to 'Logo', root_path, class: 'brand-logo' %>
+            <%= link_to 'eLearning', root_path, class: 'brand-logo' %>
           </h4>
         </div>
         <div class="col s5">
         </div>
         <div class="col s5">
           <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if !current_user.nil? && current_user.teacher_role? %>
+            <li><a class="dropdown-button" data-activates="teacher-courses"><i class="material-icons left"></i> Courses <i class="material-icons left">arrow_drop_down</i></a></li>
+          <% else %>
             <li><%= link_to 'Courses', courses_all_path %></li>
-            <li><%= link_to 'Partners & Universities', universities_path %></li>
+          <% end %>
+          <li><%= link_to 'Partners & Universities', universities_path %></li>
             <% if current_user.nil? %>
               
               <li> <a class="waves-effect waves-light btn indigo" href="/users/sign_in"><i class="material-icons left">input</i>Login</a></li>
@@ -20,7 +24,11 @@
                 <% if current_user.admin? %>
                   <li><a class="dropdown-button" href="#!" data-activates="admin"><i class="material-icons left">supervisor_account</i> Admin <i class="material-icons right">arrow_drop_down</i></a></li>
                 <% else %>
-                <li><a class="dropdown-button" href="#!" data-activates="user"><i class="material-icons left">perm_identity</i> My Account<i class="material-icons right">arrow_drop_down</i></a></li>
+                  <% if current_user.student_role? %>
+                    <li><a class="dropdown-button" href="#!" data-activates="student"><i class="material-icons left">perm_identity</i> My Account<i class="material-icons right">arrow_drop_down</i></a></li>
+                  <% else %>
+                    <li><a class="dropdown-button" href="#!" data-activates="teacher"><i class="material-icons left">perm_identity</i> My Account<i class="material-icons right">arrow_drop_down</i></a></li>
+                  <% end %>
                 <% end %>
             <% end %>
           </ul>
@@ -29,13 +37,25 @@
     </div>
   </nav>
 </div>
-<ul id="user" class="dropdown-content">
+
+<ul id="student" class="dropdown-content">
   <li><%= link_to 'My courses', course_enrollements_path %></li>
   <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
   <li class="divider"></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete  %></li>
 </ul>
-  
+
+<ul id="teacher" class="dropdown-content">
+  <li><%= link_to 'My courses', courses_path %></li>
+  <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+  <li class="divider"></li> 
+  <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete  %></li>
+</ul>
+<ul id="teacher-courses" class="dropdown-content">
+  <li><%= link_to 'All Courses', courses_all_path %></li>
+  <li><%= link_to 'Add Course', new_course_path  %></li>
+</ul>
+ 
 <ul id="admin" class="dropdown-content">
   <li><%= link_to 'Dashboard', rails_admin_path %> </li>
   <li class="divider"></li>

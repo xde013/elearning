@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col s8 offset-s2">
      <h3>Sign up</h3>
-        <p class="flow-text"> Join your university and start teaching! </p>
+        <p class="flow-text"> To access the best online courses and start learning! </p>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
 
@@ -40,9 +40,8 @@
 
           <div class="field">
             
-            <%= f.select :university_id, options_for_select(University.all.map{ |u| [ u.name, u.id]}), {prompt: 'Select your University', } %>
+            <%= f.select :university_id, options_for_select(University.all.map{ |u| [ u.name, u.id]}), {prompt: 'Select your University' } %>
           </div>
-
           <div class="row">
           </div>
 
@@ -52,7 +51,6 @@
         <% end %>
          <%= render "devise/shared/links" %>
       </div>
-
     
      <script>
        $(document).ready(function() {
