@@ -1,24 +1,20 @@
 # README
+Please read me.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Things you may want to check out:
 
-Things you may want to cover:
+* Rails version => v5.1.1
 
-* Ruby version
+* Ruby version => v2.3.3p222
 
-* System dependencies
+* System dependencies => { Node v7.1.0}
 
-* Configuration
+* Configuration => Raisl defaults
 
-* Database creation
+* Database creation => Rails Defaults
 
-* Database initialization
+* Database initialization => Rails Defaults
 
-* How to run the test suite
+* Services (job queues, cache servers, search engines, etc.) => No services ATM
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Deployment instructions => TBD
