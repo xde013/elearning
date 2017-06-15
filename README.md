@@ -1,5 +1,15 @@
 # README
-Please read me.
+Elearning platform using Ruby On Rails 5: Developpement [demo](https://elearning-raytech.c9users.io/) 
+PLease use the following accounts or create your own. 
+# USAGE
+
+ ## LOGINS
+
+ | User        | email          | pass  |
+| ------------- |:-------------:| -----:|
+| Admin      | admin@mail.com | 123456 |
+| Teacher     | teacher@mail.com     |   123456 |
+| Student | student@mail.com      |    123456 |
 
 ## Things you may want to check out:
 
@@ -19,12 +29,3 @@ Please read me.
 
 * Deployment instructions => TBD
 
-# USAGE
-
- ## LOGINS
-
- | User        | email          | pass  |
-| ------------- |:-------------:| -----:|
-| Admin      | admin@mail.com | 123456 |
-| Teacher     | teacher@mail.com     |   123456 |
-| Student | student@mail.com      |    123456 |
