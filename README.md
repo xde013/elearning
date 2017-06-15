@@ -18,3 +18,13 @@ Please read me.
 * Services (job queues, cache servers, search engines, etc.) => No services ATM
 
 * Deployment instructions => TBD
+
+# USAGE
+
+ ## LOGINS
+
+ | User        | email          | pass  |
+| ------------- |:-------------:| -----:|
+| Admin      | admin@mail.com | 123456 |
+| Teacher     | teacher@mail.com     |   123456 |
+| Student | student@mail.com      |    123456 |
