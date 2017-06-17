@@ -1,5 +1,8 @@
 # README
 Elearning platform using Ruby On Rails 5: Developpement [demo](https://elearning-raytech.c9users.io/) 
+<p align="center">
+![](http://i.imgur.com/vPhiCjE.gif)
+</p>
 > PLease use the following accounts or create your own. 
 # USAGE
 
