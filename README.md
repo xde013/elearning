@@ -1,3 +1,5 @@
+# DEPRECATION
+ > This project is no longer maintained.
 # README
 Elearning platform using Ruby On Rails 5: Developpement [demo](https://elearning-raytech.c9users.io/) 
 ![](http://i.imgur.com/vPhiCjE.gif)
